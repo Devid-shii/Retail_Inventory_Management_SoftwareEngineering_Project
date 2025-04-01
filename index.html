@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retail Inventory Management</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>Retail Inventory Management</h1>
+      </header>
+      
+      <main>
+        <div class="controls">
+          <button id="addProductBtn" class="primary-btn">Add New Product</button>
+        </div>
+
+        <div id="productForm" class="modal hidden">
+          <div class="modal-content">
+            <h2 class="modal-title">Add New Product</h2>
+            <form id="inventoryForm">
+              <div class="form-group">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" required>
+              </div>
+              <div class="form-group">
+                <label for="productPrice">Price:</label>
+                <input type="number" id="productPrice" step="0.01" required>
+              </div>
+              <div class="form-group">
+                <label for="productQuantity">Quantity:</label>
+                <input type="number" id="productQuantity" required>
+              </div>
+              <div class="form-group">
+                <label for="productCategory">Category:</label>
+                <select id="productCategory" required>
+                  <option value="electronics">Electronics</option>
+                  <option value="clothing">Clothing</option>
+                  <option value="food">Food</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="productImageFile">Upload Image:</label>
+                <input type="file" id="productImageFile" accept="image/*" class="file-input">
+                <div class="image-preview-container hidden">
+                  <img id="imagePreview" src="" alt="Preview" class="image-preview">
+                  <button type="button" id="removeImage" class="remove-image-btn">×</button>
+                </div>
+                <p class="or-divider">OR</p>
+                <label for="productImageUrl">Image URL:</label>
+                <input type="text" id="productImageUrl" placeholder="Enter image URL">
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="primary-btn">Save Product</button>
+                <button type="button" class="secondary-btn" id="cancelBtn">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="inventory-section">
+          <div class="filters">
+            <input type="text" id="searchInput" placeholder="Search products...">
+            <select id="categoryFilter">
+              <option value="">All Categories</option>
+              <option value="electronics">Electronics</option>
+              <option value="clothing">Clothing</option>
+              <option value="food">Food</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="view-toggle">
+            <button id="gridViewBtn" class="view-btn active">Grid View</button>
+            <button id="tableViewBtn" class="view-btn">Table View</button>
+          </div>
+
+          <div id="gridView" class="product-grid"></div>
+
+          <table id="inventoryTable" class="hidden">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Last Modified</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inventoryList"></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
